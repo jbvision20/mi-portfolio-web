@@ -65,4 +65,11 @@ document.addEventListener("DOMContentLoaded", () => {
             navbar.style.boxShadow = "none";
         }
     });
+
+    // 4. Bloquear el menú contextual y arrastre en todas las imágenes/móviles
+    document.addEventListener('contextmenu', event => event.preventDefault());
+    
+    document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('dragstart', (e) => e.preventDefault());
+    });
 });

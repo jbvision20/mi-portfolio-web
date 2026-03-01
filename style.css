@@ -11,6 +11,21 @@
     box-sizing: border-box;
 }
 
+/* Bloquear descarga, selección y arrastre de todas las imágenes */
+img {
+    -webkit-user-drag: none;
+    -khtml-user-drag: none;
+    -moz-user-drag: none;
+    -o-user-drag: none;
+    user-drag: none;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+}
+
 body {
     font-family: 'Inter', sans-serif;
     background-color: var(--bg-color);
@@ -235,6 +250,24 @@ h1 {
     box-shadow: 0 4px 20px rgba(255, 255, 255, 0.03);
     /* Sombra muy suave para elegancia en fondo oscuro */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* OVERLAY HACK: Necesario para posicionar la capa protectora */
+    position: relative;
+}
+
+/* Capa transparente por encima de la imagen para bloquear el toque prolongado en móviles */
+.gallery-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    /* Bloquea las interacciones táctiles en la capa superior */
+    pointer-events: auto;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    background-color: transparent; /* Fuerza a registrar toques en móviles */
 }
 
 .gallery-item img {
@@ -243,17 +276,6 @@ h1 {
     /* IMPORTANTE: Mantiene la proporción original y calidad HD */
     display: block;
     transition: transform 0.5s ease;
-
-    /* Protecciones contra descargas */
-    pointer-events: none;
-    /* Evita hacer click derecho sobre la imagen */
-    user-select: none;
-    /* Evita que se pueda seleccionar */
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    -webkit-user-drag: none;
-    /* Evita que se pueda arrastrar hacia el escritorio */
 }
 
 /* Animación al pasar el mouse por encima */

@@ -1,0 +1,305 @@
+:root {
+    --bg-color: #050505;
+    --text-color: #ffffff;
+    --secondary-text: #a0a0a0;
+    --accent-color: #ededed;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-color);
+    /* Patrón de textura: Pequeños puntos cuadrados muy sutiles */
+    background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 20px 20px;
+    /* Tamaño del patrón */
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Navbar Fija (Sticky) */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem 5vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(5, 5, 5, 0.85);
+    backdrop-filter: blur(10px);
+    /* Efecto vidrio ahumado transparente */
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.custom-logo-nav {
+    height: 40px;
+    width: auto;
+    display: block;
+    border-radius: 4px;
+    /* Suaviza las esquinas si es cuadrado */
+    box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+    /* Efecto de insignia sutil */
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin-left: 2rem;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--secondary-text);
+}
+
+/* Sección Hero (Pantalla Principal) */
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    flex-direction: column;
+    /* Para alinear logo y texto verticalmente */
+}
+
+.custom-logo-hero {
+    max-width: 500px;
+    /* Tamaño mucho más grande en escritorio para llenar espacio */
+    width: 90%;
+    /* Responsivo en móviles para ocupar más ancho */
+    height: auto;
+    margin-bottom: 2rem;
+    border-radius: 8px;
+    /* Si tiene fondo blanco, que parezca una placa elegante */
+    box-shadow: 0 10px 40px rgba(255, 255, 255, 0.05);
+    /* Resplandor de fondo premium */
+}
+
+.typing-text {
+    font-weight: 600;
+    color: #fff;
+    border-right: 2px solid #fff;
+    /* Cursor de máquina de escribir */
+    padding-right: 5px;
+    animation: blink 0.75s step-end infinite;
+}
+
+@keyframes blink {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: #fff;
+    }
+}
+
+.scroll-down-btn {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.scroll-down-btn:hover {
+    opacity: 1;
+}
+
+/* Animaciones al hacer scroll (Reveal) */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+header {
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    display: none;
+    /* Quitamos el header antiguo */
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+}
+
+.logo .lens-icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-top: 3px;
+    color: var(--text-color);
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    color: var(--secondary-text);
+    font-weight: 300;
+}
+
+.portfolio-section {
+    margin-bottom: 6rem;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 0 2rem;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.divider {
+    height: 1px;
+    width: 60px;
+    background-color: var(--secondary-text);
+    margin: 0 auto;
+    opacity: 0.5;
+}
+
+/* Sistema de grilla tipo Masonry (adaptado con CSS columns) */
+.gallery {
+    column-count: 3;
+    column-gap: 20px;
+    padding: 0 5vw;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    break-inside: avoid;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 8px;
+    /* Bordes ligeramente redondeados para ser más amigable */
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.03);
+    /* Sombra muy suave para elegancia en fondo oscuro */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    /* IMPORTANTE: Mantiene la proporción original y calidad HD */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Animación al pasar el mouse por encima */
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.08);
+    /* Sombra suave blanca al pasar el mouse */
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03);
+}
+
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid #222222;
+    /* Línea separadora sutil y oscura */
+    color: var(--secondary-text);
+    font-size: 0.9rem;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 10px;
+    font-weight: 400;
+    transition: color 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-text);
+}
+
+/* Responsividad para computadoras pequeñas / tablets */
+@media (max-width: 900px) {
+    .gallery {
+        column-count: 2;
+    }
+}
+
+/* Responsividad para celulares */
+@media (max-width: 600px) {
+    header {
+        padding: 4rem 1rem 2rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .gallery {
+        column-count: 1;
+        padding: 0 1rem;
+    }
+}

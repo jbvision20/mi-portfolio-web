@@ -243,6 +243,17 @@ h1 {
     /* IMPORTANTE: Mantiene la proporción original y calidad HD */
     display: block;
     transition: transform 0.5s ease;
+
+    /* Protecciones contra descargas */
+    pointer-events: none;
+    /* Evita hacer click derecho sobre la imagen */
+    user-select: none;
+    /* Evita que se pueda seleccionar */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;
+    /* Evita que se pueda arrastrar hacia el escritorio */
 }
 
 /* Animación al pasar el mouse por encima */
